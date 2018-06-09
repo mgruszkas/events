@@ -18,12 +18,27 @@ const parse = x => x.map( e => new Event(e));
 */
 @Injectable()
 export class EventsProvider {
-
+  public eventsCache: Event[] = [];
   constructor(public http: HttpClient) {
   }
 
-  public getAllEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(SERVICE_URL).pipe( map( parse) );
+  public getAllEvents(reload = false): Promise<Event[]>{
+    return new Promise( (resolve, reject) => {
+      if (this.eventsCache.length && !reload) {
+        resolve(this.eventsCache);
+      } else {
+        this.getEvents().subscribe( (events) => {
+          this.eventsCache = events;
+          resolve(this.eventsCache);
+        }, (error) => {
+          reject(error);
+        });
+      }
+    });
+  }
+
+  private getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(SERVICE_URL).pipe( map(parse) );
   }
 
 }

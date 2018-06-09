@@ -1,4 +1,5 @@
 import { EventMember } from './EventMember';
+import * as moment from 'moment';
 
 export interface IEvent {
   dateTime: Date;
@@ -8,6 +9,8 @@ export interface IEvent {
   members: EventMember[];
   status: string;
   title: string;
+  going: boolean;
+  ignored: boolean;
 }
 
 export class Event implements IEvent {
@@ -18,11 +21,18 @@ export class Event implements IEvent {
   members: EventMember[] = [];
   status: string = null;
   title: string = null;
+  going: boolean = false;
+  ignored: boolean = false;
   static create(props) {
     return new Event(props);
   }
+  static parseDate(input: string): Date {
+    let date = moment(input, "D-MM-YYYY HH:mm:ss");
+    
+    return date.toDate();
+  }
   constructor(props) {
-    this.dateTime = props.dateTime ? new Date(props.dateTime) : null;
+    this.dateTime = props.dateTime ? Event.parseDate(props.dateTime) : new Date();
     this.description = props.description ? props.description : '';
     this.id = props.id ? props.id : 0;
     this.image = props.image ? props.image : null;

@@ -1,43 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Avatar List</ion-title>
+    <ion-title>Events</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="list-avatar-page">
-  <ion-list>
+    <ion-searchbar
+    placeholder="Search Events"
+    [(ngModel)]="search"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  <ion-list *ngIf="todayEvents.length">
 
-    <ion-list-header>Today</ion-list-header>
+    <ion-list-header color="light"><button ion-button item-start>Today</button></ion-list-header>
 
-    <ion-item *ngFor="let event of todayEvents">
-      <ion-thumbnail item-start>
-        <time class="event-day">{{ event.dateTime|date:'L' }}</time>
-        <time class="event-month">{{ event.dateTime|date:'MMM' }}</time>
-        <img [src]="event.image" />
-      </ion-thumbnail>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.description }}</p>
-      <ion-avatar>
-        <img class="member-photo" *ngFor="let member of event.members.slice(0,3)" [src]="member.photo" />
-        <b class="member-more" *ngIf="event.members.length > 3">+{{ event.members.length - 3 }} others</b>
-      </ion-avatar>
-      <ion-note item-end>{{ event.dateTime|weekDays }}</ion-note>
-    </ion-item>
+    <event-item *ngFor="let event of todayEvents" [data]="event"></event-item>
 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="weekEvents.length">
 
-    <ion-list-header>This week</ion-list-header>
+    <ion-list-header color="light"><button ion-button item-start>This week</button></ion-list-header>
 
-    <ion-item *ngFor="let event of weekEvents">
-      <ion-thumbnail item-start>
-        <img [src]="event.image">
-      </ion-thumbnail>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.description }}</p>
-      <ion-note item-end>3:43 pm</ion-note>
-    </ion-item>
+    <event-item *ngFor="let event of weekEvents" [data]="event"></event-item>
 
   </ion-list>
 

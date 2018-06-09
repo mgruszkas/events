@@ -1,0 +1,19 @@
+<!-- Generated template for the EventItemComponent component -->
+<ion-item>
+  <ion-thumbnail item-start>
+    <time class="event-day">{{ data.dateTime|date:'L' }}</time>
+    <time class="event-month">{{ data.dateTime|date:'MMM' }}</time>
+    <img [ngStyle]="{'width':'120px', 'height': '120px'}" [src]="data.image" />
+  </ion-thumbnail>
+  <h2>{{ data.title }}</h2>
+  <p>{{ data.dateTime|weekDays }} from {{ data.dateTime|date:'h' }} {{ data.dateTime|date:'aaa'}}</p>
+  <ion-avatar>
+    <img class="member-photo" *ngFor="let member of data.members.slice(0,3)" [src]="member.photo" />
+    <b class="member-more" *ngIf="data.members.length > 3">+{{ data.members.length - 3 }} others</b>
+  </ion-avatar>
+  <button ion-button icon-start (click)="onGoingClick(data)">
+    <ion-icon *ngIf="data.going" name="star"></ion-icon>
+    Going
+  </button>
+  <button ion-button color="light">Ignore</button>
+</ion-item>
