@@ -26,7 +26,7 @@ export class Event implements IEvent {
     this.description = props.description ? props.description : '';
     this.id = props.id ? props.id : 0;
     this.image = props.image ? props.image : null;
-    this.members = this.members.length ? this.members.map( member => EventMember.create(member)) : [];
+    this.members = props.members.length ? props.members.map( member => EventMember.create(member)) : [];
     this.status = props.status ? props.status : null;
     this.title = props.title ? props.title : '';
   }

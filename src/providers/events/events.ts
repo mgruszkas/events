@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { Event, EventMember } from './../../models';
 import { map } from 'rxjs/operators';
 
+export * from './../../models/Event';
+export * from './../../models/EventMember';
+
 const SERVICE_URL = 'https://tsh-app.firebaseio.com/events.json';
 
 const parse = x => x.map( e => new Event(e));
@@ -19,8 +22,8 @@ export class EventsProvider {
   constructor(public http: HttpClient) {
   }
 
-  public getAllEvents(): Observable<Event> {
-    return this.http.get(SERVICE_URL).pipe( map( parse) );
+  public getAllEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(SERVICE_URL).pipe( map( parse) );
   }
 
 }
