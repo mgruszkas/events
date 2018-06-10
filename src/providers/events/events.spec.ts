@@ -7,18 +7,18 @@ import { EventsProvider } from './events';
 const SERVICE_URL = 'https://tsh-app.firebaseio.com/events.json';
 const EVENT_ID = 1;
 const RESPONSE = [{  
-  "dateTime":"1-05-2018 21:22:48",
-  "description":"TSH A'dam City invited you to this party ",
-  "id":EVENT_ID,
-  "image":"https://www.visitdenmark.co.uk/sites/default/files/styles/block_ratio/public/vdk_images/Attractions-Activities-interest-accommodation-people-geo/Events/Sporting-events/color-run-credit-colorrun.dk.jpg?itok=udG3wZA3",
-  "members":[  
+  dateTime:"1-05-2018 21:22:48",
+  description:"TSH A'dam City invited you to this party ",
+  id:EVENT_ID,
+  image: "https://www.visitdenmark.co.uk/sites/default/files/styles/block_ratio/public/vdk_images/Attractions-Activities-interest-accommodation-people-geo/Events/Sporting-events/color-run-credit-colorrun.dk.jpg?itok=udG3wZA3",
+  members:[  
      {  
-        "id":1,
-        "photo":"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i8W2rlxCOL0g/v0/400x-1.jpg"
+        id:1,
+        photo:"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i8W2rlxCOL0g/v0/400x-1.jpg"
      }
   ],
-  "status":"going",
-  "title":"Amsterdam bike tour"
+  status:"going",
+  title:"Amsterdam bike tour"
 }];
 
 describe('EventsService', () => {
