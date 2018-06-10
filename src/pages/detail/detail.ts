@@ -23,7 +23,6 @@ export class DetailPage {
     if(id) {
       this.eventsProvider.getEvent(id).then( (event) => {
         this.event = event;
-        console.log('Event', event);
       }, (error) => {
         console.log('Error', error);
       });
