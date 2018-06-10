@@ -1,15 +1,15 @@
 <!-- Generated template for the EventItemComponent component -->
 <ion-item>
   <ion-thumbnail item-start (click)="goToDetails(data)">
-    <time class="event-day">{{ data.dateTime|date:'d' }}</time>
-    <time class="event-month">{{ data.dateTime|date:'MMM' }}</time>
+    <div class="event-day">{{ data.dateTime|date:'d' }}</div>
+    <div class="event-month">{{ data.dateTime|date:'MMM' }}.</div>
     <img [ngStyle]="{'width':'120px', 'height': '120px'}" [src]="data.image" />
   </ion-thumbnail>
   <h2>{{ data.title }} {{ data.dateTime|date }}</h2>
   <p>{{ data.dateTime|weekDays }} from {{ data.dateTime|date:'h' }} {{ data.dateTime|date:'aaa'}}</p>
   <ion-avatar>
     <img class="member-photo" *ngFor="let member of data.members.slice(0,3)" [src]="member.photo" />
-    <b class="member-more" *ngIf="data.members.length > 3">+{{ data.members.length - 3 }} others</b>
+    <span class="member-more" *ngIf="data.members.length > 3">+{{ data.members.length - 3 }} others</span>
   </ion-avatar>
   <button *ngIf="!data.ignored" [color]="data.going ? 'default' : 'light'" ion-button icon-start (click)="onGoingClick(data)">
     <ion-icon *ngIf="data.going" name="checkmark"></ion-icon>
