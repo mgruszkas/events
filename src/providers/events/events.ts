@@ -18,21 +18,35 @@ const parse = x => x.map( e => new Event(e));
 */
 @Injectable()
 export class EventsProvider {
-  public eventsCache: Event[] = [];
+  public eventsCache: Map<number, Event> = new Map<number, Event>();
   constructor(public http: HttpClient) {
   }
 
-  public getAllEvents(reload = false): Promise<Event[]>{
+  public getAllEvents(reload = false): Promise<Event[]> {
     return new Promise( (resolve, reject) => {
-      if (this.eventsCache.length && !reload) {
-        resolve(this.eventsCache);
+      if (this.eventsCache.size && !reload) {
+        resolve(Array.from(this.eventsCache,  e => e[1]));
       } else {
         this.getEvents().subscribe( (events) => {
-          this.eventsCache = events;
-          resolve(this.eventsCache);
+          events.forEach( (event) => {
+            this.eventsCache.set(event.id, event);
+          });
+          resolve(Array.from(this.eventsCache, e => e[1]));
         }, (error) => {
           reject(error);
         });
+      }
+    });
+  }
+
+  public getEvent(id: number): Promise<Event> {
+    return new Promise<Event>( async (resolve, reject) => {
+      await this.getAllEvents();
+      let event = this.eventsCache.get(id);
+      if (event instanceof Event) {
+        resolve(event);
+      } else {
+        reject('Not found');
       }
     });
   }

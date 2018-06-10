@@ -1,3 +1,56 @@
 page-detail {
+  ion-label.label-md {
+    margin: 0px;
+  }
+  .scroll-content {
+    margin-top: 0px!important;
+  }
+  ion-header {
+    &::after {
+      display: none;
+    }
+  }
+  .header-image {
+    img {
+      bottom: 50%;
+      width: 100%;
+      position: absolute;
+      margin-bottom: -15vh;
+    }
+  }
 
+  .title {
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .detail-list {
+    ul {
+      list-style: none;
+      padding-left: 0px;
+      li {
+        padding: 5px 0;
+      }
+    }
+  }
+
+  .detail-members {
+    .member-photo {
+      display: inline;
+      height: 50px;
+      width: 50px;
+      border: 2px solid #ffff;
+      &:nth-child(n+2) {
+        margin-left: -10px;
+      }
+      &.member-more {
+        display: inline-block;
+        background: #ffd102;
+        border-radius: 100px;
+        line-height: 50px;
+        text-align: center;
+        transform: translateY(-17px);
+      }
+    }
+  }
 }

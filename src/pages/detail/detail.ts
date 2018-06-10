@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { EventsProvider, Event } from './../../providers/events/events';
 
 /**
  * Generated class for the DetailPage page.
@@ -13,12 +14,24 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public event: Event = null;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private eventsProvider: EventsProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailPage', this.navParams);
+    let id = this.navParams.get('id');
+    if(id) {
+      this.eventsProvider.getEvent(id).then( (event) => {
+        this.event = event;
+        console.log('Event', event);
+      }, (error) => {
+        console.log('Error', error);
+      });
+    }
+  }
+
+  public goBack(): void {
+    this.navCtrl.pop();
   }
 
 }

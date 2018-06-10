@@ -63,7 +63,7 @@ export class HomePage implements OnInit {
 
   public seeDetails(event: Event) {
     this.navCtrl.push(DetailPage, {
-      eventId: event.id
+      id: event.id
     });
   }
 
