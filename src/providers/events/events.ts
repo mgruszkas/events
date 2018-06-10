@@ -28,6 +28,7 @@ export class EventsProvider {
         resolve(Array.from(this.eventsCache,  e => e[1]));
       } else {
         this.getEvents().subscribe( (events) => {
+          this.eventsCache.clear();
           events.forEach( (event) => {
             this.eventsCache.set(event.id, event);
           });
