@@ -7,24 +7,35 @@ export interface IEvent {
   id: number;
   image: string;
   members: EventMember[];
-  status: string;
   title: string;
+  status: string;
   going: boolean;
   ignored: boolean;
 }
 
 export class Event implements IEvent {
-  dateTime: Date = null;
-  description: string = null;
-  id: number = null;
-  image: string = null;
-  members: EventMember[] = [];
-  status: string = null;
-  title: string = null;
-  going: boolean = false;
-  ignored: boolean = false;
+  public dateTime: Date = null;
+  public description: string = null;
+  public id: number = null;
+  public image: string = null;
+  public members: EventMember[] = [];
+  public title: string = null;
+  public going: boolean = false;
+  public ignored: boolean = false;
+  public _status: string = null;
   static create(props) {
     return new Event(props);
+  }
+  public set status(status) {
+    this._status = status;
+    if (status === "going") {
+      this.going = true;
+    } else if (status === "ignore") {
+      this.ignored = true;
+    }
+  }
+  public get status() {
+    return this._status;
   }
   static parseDate(input: string): Date {
     let date = moment(input, "D-MM-YYYY HH:mm:ss");
@@ -40,4 +51,5 @@ export class Event implements IEvent {
     this.status = props.status ? props.status : null;
     this.title = props.title ? props.title : '';
   }
+
 }
