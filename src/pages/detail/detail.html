@@ -44,8 +44,8 @@
       <ion-row padding>
         <ion-col col-10 offset-1 class="detail-members">
           <ion-avatar>
-            <img class="member-photo" *ngFor="let member of event.members.slice(0,8)" [src]="member.photo" />
-            <b class="member-more member-photo" *ngIf="event.members.length > 8">+{{ event.members.length - 8 }}</b>
+            <img class="member-photo" *ngFor="let member of event.members.slice(0,6)" [src]="member.photo" />
+            <b class="member-more member-photo" *ngIf="event.members.length > 6">+{{ event.members.length - 6 }}</b>
           </ion-avatar>
         </ion-col>
       </ion-row>
