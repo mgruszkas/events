@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { EventsProvider, Event, EventMember } from './../../providers/events/events';
+import { EventsProvider, Event } from './../../providers/events/events';
 import { DetailPage } from './../detail/detail';
 
 const ONE_DAY_TIMESPAN = 3600 * 24 * 100;
