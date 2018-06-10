@@ -32,7 +32,7 @@
 
       <ion-list-header class="header-badge header-badge-other" color="light"></ion-list-header>
   
-      <event-item *ngFor="let event of otherEvents" [data]="event"></event-item>
+      <event-item *ngFor="let event of otherEvents" (seeDetails)="seeDetails(event)" [data]="event"></event-item>
   
     </ion-list>
 

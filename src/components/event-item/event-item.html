@@ -1,6 +1,6 @@
 <!-- Generated template for the EventItemComponent component -->
 <ion-item>
-  <ion-thumbnail item-start>
+  <ion-thumbnail item-start (click)="goToDetails(data)">
     <time class="event-day">{{ data.dateTime|date:'d' }}</time>
     <time class="event-month">{{ data.dateTime|date:'MMM' }}</time>
     <img [ngStyle]="{'width':'120px', 'height': '120px'}" [src]="data.image" />

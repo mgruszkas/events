@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventsProvider, Event, EventMember } from './../../providers/events/events';
+import { DetailPage } from './../detail/detail';
 
 const ONE_DAY_TIMESPAN = 3600 * 24 * 100;
 
@@ -58,6 +59,12 @@ export class HomePage implements OnInit {
   public onCancel(): void {
     this.search = '';
     this.loadData();
+  }
+
+  public seeDetails(event: Event) {
+    this.navCtrl.push(DetailPage, {
+      eventId: event.id
+    });
   }
 
   private filterEvent(search: string, event: Event): boolean {

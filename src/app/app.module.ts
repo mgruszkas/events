@@ -9,12 +9,14 @@ import { EventItemComponent } from './../components/index';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DetailPage } from '../pages/detail/detail';
 import { EventsProvider } from '../providers/events/events';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    DetailPage,
     EventItemComponent
   ],
   imports: [
@@ -27,6 +29,7 @@ import { EventsProvider } from '../providers/events/events';
   entryComponents: [
     MyApp,
     HomePage,
+    DetailPage
   ],
   providers: [
     StatusBar,
