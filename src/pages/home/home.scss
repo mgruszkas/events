@@ -36,4 +36,40 @@ page-home {
       }
     }
   }
+
+  .animated {
+    animation: animation 2s;
+    animation-fill-mode: forwards;
+  }
+
+  .emot {
+    animation: emot 4s;
+    animation-fill-mode: forwards;
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+@keyframes animation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  70% {
+    transform: rotateZ(-70deg);
+  }
+  100% {
+    transform: rotateZ((-180deg));
+  }
+}
+
+@keyframes emot {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(10deg);
+  }
+  100% {
+    transform: rotateZ(90deg);
+  }
 }

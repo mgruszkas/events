@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   public weekEvents: Event[] = [];
   public otherEvents: Event[] = [];
   public search: string = '';
+  public error: boolean = false;
   public get shouldShowCancel() {
     return this.search.length;
   }
@@ -36,6 +37,7 @@ export class HomePage implements OnInit {
       this.todayEvents = [];
       this.weekEvents = [];
       this.otherEvents = [];
+      this.error = false;
       data.filter( (element) => {
         return this.filterEvent(search, element);
       }).map( (event) => {
@@ -47,8 +49,12 @@ export class HomePage implements OnInit {
           this.otherEvents.push(event);
         }
       });
+      if (this.todayEvents.length + this.weekEvents.length + this.otherEvents.length === 0) {
+        this.error = true;
+      }
     }, (error) => {
       console.error('Unable to get events from data source', error);
+      this.error = true;
     });
   }
 

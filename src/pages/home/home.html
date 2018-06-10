@@ -21,5 +21,10 @@
     
     <ion-list-header *ngIf="otherEvents.length" class="header-badge header-badge-other" color="light"></ion-list-header>
     <event-item *ngFor="let event of otherEvents" (seeDetails)="seeDetails(event)" [data]="event"></event-item>
+
+    <ion-item text-center *ngIf="error">
+      <ion-icon [ngStyle]="{'font-size': '24px'}" class="animated" name="beer"></ion-icon>
+      Unfortunately no events found <span class="emot">:(</span>
+    </ion-item>
   </ion-list>
 </ion-content>
