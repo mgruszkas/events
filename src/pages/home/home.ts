@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventsProvider, Event, EventMember } from './../../providers/events/events';
 
+const ONE_DAY_TIMESPAN = 3600 * 24 * 100;
 
 @Component({
   selector: 'page-home',
@@ -10,6 +11,7 @@ import { EventsProvider, Event, EventMember } from './../../providers/events/eve
 export class HomePage implements OnInit {
   public todayEvents: Event[] = [];
   public weekEvents: Event[] = [];
+  public otherEvents: Event[] = [];
   public search: string = '';
   public get shouldShowCancel() {
     return this.search.length;
@@ -25,19 +27,23 @@ export class HomePage implements OnInit {
 
   private loadData(search = '', reload = false): void {
     let today = new Date();
-    today.setHours(23);
-    today.setMinutes(59);
+    today.setHours(23, 59);
+    let yesterday = new Date(today.getTime() - ONE_DAY_TIMESPAN);
+    let week = new Date(today.getTime() + 7 * ONE_DAY_TIMESPAN);
 
     this.eventsService.getAllEvents(reload).then( (data) => {
       this.todayEvents = [];
       this.weekEvents = [];
+      this.otherEvents = [];
       data.filter( (element) => {
         return this.filterEvent(search, element);
       }).map( (event) => {
-        if(event.dateTime <= today) {
+        if(event.dateTime > yesterday && event.dateTime <= today) {
           this.todayEvents.push(event);
-        } else {
+        } else if (event.dateTime > yesterday && event.dateTime <= week ){
           this.weekEvents.push(event);
+        } else {
+          this.otherEvents.push(event);
         }
       });
     }, (error) => {
@@ -46,7 +52,6 @@ export class HomePage implements OnInit {
   }
 
   public onInput(): void {
-    console.log('search', this.search);
     this.loadData(this.search);
   }
 

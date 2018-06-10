@@ -28,7 +28,7 @@ export class Event implements IEvent {
   }
   static parseDate(input: string): Date {
     let date = moment(input, "D-MM-YYYY HH:mm:ss");
-    
+    console.log('event', date.toDate())
     return date.toDate();
   }
   constructor(props) {

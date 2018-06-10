@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Events</ion-title>
+    <ion-title text-center>Events</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
   </ion-searchbar>
   <ion-list *ngIf="todayEvents.length">
 
-    <ion-list-header color="light"><button ion-button item-start>Today</button></ion-list-header>
+    <ion-list-header class="header-badge header-badge-today" color="light"></ion-list-header>
 
     <event-item *ngFor="let event of todayEvents" [data]="event"></event-item>
 
@@ -22,11 +22,19 @@
 
   <ion-list *ngIf="weekEvents.length">
 
-    <ion-list-header color="light"><button ion-button item-start>This week</button></ion-list-header>
+    <ion-list-header class="header-badge header-badge-week" color="light"></ion-list-header>
 
     <event-item *ngFor="let event of weekEvents" [data]="event"></event-item>
 
   </ion-list>
+
+  <ion-list *ngIf="otherEvents.length">
+
+      <ion-list-header class="header-badge header-badge-other" color="light"></ion-list-header>
+  
+      <event-item *ngFor="let event of otherEvents" [data]="event"></event-item>
+  
+    </ion-list>
 
 
 </ion-content>

@@ -1,10 +1,39 @@
 page-home {
   ion-list-header {
-    overflow:visible;
+    overflow: visible;
     contain: none!important;
+    
+    &.header-badge {
+      &::after {
+        display: inline-block;
+        background: #ffd102;
+        position: absolute;
+        bottom: -10px;
+        left: 5px;
+        font-size: 1.5em;
+        padding: 2px 8px;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: bold;
+      }
 
-    button {
-      transform: translateY(20px);
+      &.header-badge-other {
+        &::after {
+          content: "Other";
+        }
+      }
+
+      &.header-badge-week {
+        &::after {
+          content: "This week";
+        }
+      }
+
+      &.header-badge-today {
+        &::after {
+          content: "Today";
+        }
+      }
     }
   }
 }
