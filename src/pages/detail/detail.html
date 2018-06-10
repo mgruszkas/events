@@ -5,9 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header *ngIf="event">
-    <ion-icon name="arrow-back" padding (click)="goBack()"></ion-icon>
+    <ion-icon [ngStyle]="{'color': 'white'}" name="arrow-back" padding (click)="goBack()"></ion-icon>
 </ion-header>
-
 
 <ion-content *ngIf="event">
   <ion-item no-padding>
@@ -31,13 +30,13 @@
         <ion-col col-12 class="detail-list">
           <ul padding-horizontal>
             <li>
-                <ion-icon name="clock"></ion-icon> Tomorrow June 12
+                <ion-icon name="clock"></ion-icon> Tomorrow June, 19 from 9.30 PM to 11.00 PM
             </li>
             <li>
-                <ion-icon name="pin"></ion-icon> The pool
+                <ion-icon name="pin"></ion-icon> The Pool - The Students Hostel Amsterdam
             </li>
             <li>
-                <ion-icon name="speedometer"></ion-icon> 15 wathing
+                <ion-icon name="speedometer"></ion-icon> {{ event.members.length }} Going
             </li>
           </ul>
         </ion-col>
@@ -50,7 +49,11 @@
           </ion-avatar>
         </ion-col>
       </ion-row>
-
+      <ion-row padding>
+        <ion-col col-12>
+          <p>{{ event.description }}</p>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </ion-item>
 </ion-content>

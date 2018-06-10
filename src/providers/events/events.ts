@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Event, EventMember } from './../../models';
+import { Event } from './../../models';
 import { map } from 'rxjs/operators';
 
 export * from './../../models/Event';

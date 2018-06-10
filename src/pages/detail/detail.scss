@@ -54,3 +54,18 @@ page-detail {
     }
   }
 }
+
+@media (max-width: 576px) {
+  page-detail {
+    .header-image {
+      ion-img {
+        height: 20vh!important;
+        img {
+          bottom: 50%;
+          width: 100%;
+          margin-bottom: -10vh;
+        }
+      }
+    }
+  }
+}

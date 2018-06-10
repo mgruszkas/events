@@ -12,29 +12,14 @@
     (ionInput)="onInput($event)"
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
-  <ion-list *ngIf="todayEvents.length">
-
-    <ion-list-header class="header-badge header-badge-today" color="light"></ion-list-header>
-
+  <ion-list no-lines>
+    <ion-list-header *ngIf="todayEvents.length" class="header-badge header-badge-today" color="light"></ion-list-header>
     <event-item *ngFor="let event of todayEvents" [data]="event"></event-item>
-
-  </ion-list>
-
-  <ion-list *ngIf="weekEvents.length">
-
-    <ion-list-header class="header-badge header-badge-week" color="light"></ion-list-header>
-
+    
+    <ion-list-header *ngIf="weekEvents.length" class="header-badge header-badge-week" color="light"></ion-list-header>
     <event-item *ngFor="let event of weekEvents" [data]="event"></event-item>
-
+    
+    <ion-list-header *ngIf="otherEvents.length" class="header-badge header-badge-other" color="light"></ion-list-header>
+    <event-item *ngFor="let event of otherEvents" (seeDetails)="seeDetails(event)" [data]="event"></event-item>
   </ion-list>
-
-  <ion-list *ngIf="otherEvents.length">
-
-      <ion-list-header class="header-badge header-badge-other" color="light"></ion-list-header>
-  
-      <event-item *ngFor="let event of otherEvents" (seeDetails)="seeDetails(event)" [data]="event"></event-item>
-  
-    </ion-list>
-
-
 </ion-content>

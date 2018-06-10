@@ -5,7 +5,7 @@
     <div class="event-month">{{ data.dateTime|date:'MMM' }}.</div>
     <img [ngStyle]="{'width':'120px', 'height': '120px'}" [src]="data.image" />
   </ion-thumbnail>
-  <h2>{{ data.title }} {{ data.dateTime|date }}</h2>
+  <h2>{{ data.title }}</h2>
   <p>{{ data.dateTime|weekDays }} from {{ data.dateTime|date:'h' }} {{ data.dateTime|date:'aaa'}}</p>
   <ion-avatar>
     <img class="member-photo" *ngFor="let member of data.members.slice(0,3)" [src]="member.photo" />
